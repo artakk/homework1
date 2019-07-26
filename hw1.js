@@ -137,7 +137,7 @@ function IsDigAreMax(number,previous,next) {
 }
 
 function findErr(arr) {
-    for (let i = 0; i < arr.length - 1; i++) {
+    for (let i = 0; i < arr.length ; i++) {
         if(!(IsDigAreMax(arr[i],arr[i-1],arr[i+1]))) {
             return i;
         }
