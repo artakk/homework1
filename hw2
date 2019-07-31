@@ -1,1 +1,100 @@
+// 1. Given an array.Write a recursive function that removes the 
+// first element and returns the given array.(whithout using 
+// Array.unshift(),assign second element to first, third element 
+// to second... )
 
+function rimoveFirstElem(arr) {
+if (arr.length === 0) {
+return arr;
+} else if (arr.length === 1 || arr.length > 1) {
+    return arr.splice(1);
+}
+}
+
+let res1 = rimoveFirstElem(['A',1,2,3,'S',23,'D']);
+    res2 = rimoveFirstElem(['A']);
+    res3 = rimoveFirstElem([]);
+
+
+console.log(res1);
+console.log(res2);
+console.log(res3);
+
+
+
+// 2.Given an array of nested arrays.Write a recursive function 
+// that flattens it.(Hint create function that concats arrays).
+
+
+ function flatten(arr) {
+     let arr1 = [];
+     arr.forEach(value => {
+if(Array.isArray(value)) {
+    arr1 = arr1.concat(flatten(value))
+} else {
+    arr1.push(value)
+}
+     });
+     return arr1;
+ }
+ console.log(flatten([1,[3,4,[1,2]],10]));
+ console.log(flatten([14,[22,[[[43,]]]],[546]]))
+
+
+// 3.Given a number.Write a  function that calculates its sum of
+// the digits and if that sum has more than 1 digit find the sum of
+// digits of the number.Repeat that process if needed ant return
+// the result.
+
+function sumOfDigits(number) {
+    let sum = 0;
+    while (number > 0){
+         sum += number % 10;
+         number = Math.floor(number / 10);
+}if(sum > 9) {
+     sum1 = 0;
+     sum1 += sumOfDigits(sum) % 10;
+     sum = Math.floor(sum / 10);
+} else {
+    return sum;
+}
+return sum1;
+}
+console.log(sumOfDigits(43))
+console.log(sumOfDigits(98))
+console.log(sumOfDigits(9999999999))
+
+
+
+// 4.Given an object.Invert it (Keys become values and values become 
+// keys). IF there is more than key for that given value create an 
+// array
+
+
+let obj1 = {
+    a: '1',
+    b: '2',
+}
+
+ let obj2 = {
+    a: '1',
+    b: '2',
+    c: '2',
+ }
+
+ let obj3 = {
+    a: '1',
+    b: '2',
+    c: '2',
+    d: '2',
+ }
+
+ function swap(obj) {
+    let ret = {};
+    let arr = [];
+    for(let key in obj) {
+       ret[obj[key]] = key;
+    }
+return ret;
+}
+console.log(swap(obj1))
