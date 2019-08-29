@@ -1,0 +1,96 @@
+// 1. Given an array of integers, find the pair 
+//    of adjacent elements that has the largest 
+//    productand return that product.
+
+
+const adjacentElementsProduct = (array) => {
+    let arr = [];
+    for(let i = 1; i < array.length; i++) {
+      arr.push(array[i] * array[i - 1]);
+    }
+    const compareNum = (a,b) => a - b;
+    arr
+    .sort(compareNum)
+    .reverse()
+    return arr[0];
+}
+let max = adjacentElementsProduct([4,6,3,7,9,4,22,5,4]);
+console.log('1 -  ' + max);
+
+// 2. Given an array of integers. All numbers
+//    are  unique. Find the count of missing 
+//    numbers between minimum and maximum 
+//    elements to make integers sequence.
+
+const missingNums = (arr) => {
+  let array = [];
+  for(let i = 0; i < arr.length - 1 ; i++) {
+      const compareNum = (a,b) => a - b;
+      arr.sort(compareNum);
+          ( arr[ i ] - arr[ i - 1 ] !== 1 ) ? array.push( arr[ i + 1 ] - arr[ i ] - 1 ) : -1 ;
+  }
+  return array.reduce((a,b) =>  a + b);
+}
+console.log('2 -  ' + missingNums([10,4,9,7,1]))
+
+
+// 3. Convert a long phrase to its acronym.
+
+const a = "my name is artak"
+.toUpperCase()
+.split(" ")
+.map(x => x[0])
+.join('');
+console.log('3 -  ' + a);
+
+// 4. Given a string of digits, output all
+//    the contiguous substrings of length 
+//    n in that string.
+
+const contiguousSub = (string,n) => {  
+  for( let i = 0; i < string.length; i++ ) {
+      for( let j = n; j <= string.length; j++ ) {
+( ( string.substring(i,j) ).length === n ) ?
+  console.log('4 -  ' + string.substring( i,j ) ) : -1;
+      }
+  }
+}
+contiguousSub( "123456", 3 )
+contiguousSub( "abcdefgh", 7 )
+
+
+
+
+// 5.
+
+let treeNodes = [
+    { parent: null, id: 0 },
+    { parent: 0,    id: 1 },
+    { parent: 0,    id: 2 },
+    { parent: 1,    id: 3 },
+    { parent: 1,    id: 4 },
+    { parent: 2,    id: 5 },
+    { parent: 4,    id: 6 },
+]
+
+
+
+
+// 6. Output the books sorted by the percent 
+//    in descending order which readStatus 
+//    is true.
+
+
+const arr = [
+  { book: "Catcher in the Rye", readStatus: true,  percent: 40 },
+  { book: "Animal Farm",        readStatus: true,  percent: 20 },
+  { book: "Solaris",            readStatus: false, percent: 90 },
+  { book: "The Fall",           readStatus: true,  percent: 50 },
+  { book: "White Nights",       readStatus: false, percent: 60 } ,
+  { book: "After Dark",         readStatus: true,  percent: 70 },
+  ]
+  .sort( (a,b) => a.percent - b.percent ) 
+  .filter(t => t.readStatus)
+  .map(bookName => bookName.book)
+  
+  console.log('6 -  ' + arr)
