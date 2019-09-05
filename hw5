@@ -1,0 +1,15 @@
+
+// 3. Given words and list of possible anagrams,
+//    select correct sublist 
+
+let list = ['licnep','circular','pupil','nilcpe','leppnec']
+let word = 'pencil';
+let a = [];
+
+const anagrams = list.filter( item => {
+ ( [...item].sort().join('') === word.split('').sort().join('')) ?
+ a.push(item) : -1;
+}) ;
+
+console.log(a)
+
