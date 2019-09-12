@@ -1,0 +1,39 @@
+// 1. Given a sorted array and element from that array. 
+//    Find the index of that element using binary search.
+
+const binarySort = (elem, arr) => {
+    let start = 0, end = arr.length - 1,middle;
+    while (start <= end) {
+     middle = Math.floor( (start + end) / 2 );
+     if( arr[middle] == elem ) return middle;
+     else if ( arr[middle] < elem) start = middle + 1;
+     else end = middle - 1;
+ }
+     return -1;
+ }
+ let res = binarySort(16,[1,5,6,8,11,13,16,18,22])
+ console.log(res)
+
+ 
+ // 2. Write a JavaScript function to get all possible
+ //    subsets of length N of the given array.Assume
+ //    that all elements in the array are unique.
+
+ const subArr = (arr) => {
+    let result = [];
+    let arr1 = [];
+    let unique = [...new Set(arr)];
+
+    for(let i = 0; i < unique.length;i++) {
+        if( i < arr.length - 1) {
+            for(let j = i + 1; j < unique.length; j++) {
+                arr1.push(unique[i], unique[j]);
+                result.push(arr1);
+                arr1 = []
+            }
+        }
+    }    
+    console.log(result)
+        }
+    
+        subArr([1,1,2,2,4,4])
