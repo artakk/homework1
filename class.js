@@ -170,10 +170,9 @@ get year() {
 set year(value) {
     this._year = value
 }
-passExam(program = this.program, grade) {
+passExam(program = this.program, [english,russian,math] = [15,18,19]) {
      program = this.program;
-    
-    if(grade >= 50) {
+    if(english + russian + math >= 50) {
         return ++this._year;
     }
     return `grade is less 50`
@@ -210,7 +209,7 @@ let person = new Person('Ani','Petrosyan','female',21)
 let student = new Student("Ani")
 let teacher = new Teacher("Mr.Brown",2400)
 
-student.passExam(student.program(),0)
+student.passExam(student.program())
 
 console.log(person.toString())
 console.log(student.toString())
